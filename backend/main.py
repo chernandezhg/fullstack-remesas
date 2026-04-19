@@ -5,7 +5,16 @@ from app.api import auth
 
 app = FastAPI(title="Remesas API")
 
-Base.metadata.create_all(bind=engine)
+import time
+from sqlalchemy.exc import OperationalError
+
+for i in range(10):
+    try:
+        Base.metadata.create_all(bind=engine)
+        break
+    except OperationalError:
+        print("Esperando a la base de datos...")
+        time.sleep(2)
 
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 

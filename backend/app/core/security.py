@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from jose import jwt, JWTError
 from fastapi import HTTPException, status
 from fastapi.security import HTTPBearer
+from passlib.context import CryptContext
 
 SECRET_KEY = "secretkey123"
 ALGORITHM = "HS256"
@@ -23,4 +24,12 @@ def verify_token(token: str):
             detail="Token inválido"
         )
 
-security = HTTPBearer()    
+security = HTTPBearer()
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def hash_password(password: str):
+    return pwd_context.hash(password)
+
+def verify_password(plain_password: str, hashed_password: str):
+    return pwd_context.verify(plain_password, hashed_password)
