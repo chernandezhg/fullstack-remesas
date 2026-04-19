@@ -12,15 +12,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+
   backend:
-    build: ./backend
+    build:
+      context: ./backend
     container_name: remesas_backend
     ports:
       - "8000:8000"
     depends_on:
       - db
-    volumes:
-      - ./backend:/app
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/remesas_db
 

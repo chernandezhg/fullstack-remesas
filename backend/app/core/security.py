@@ -4,7 +4,7 @@ from fastapi import HTTPException, status
 from fastapi.security import HTTPBearer
 from passlib.context import CryptContext
 
-SECRET_KEY = "secretkey123"
+SECRET_KEY = "secret"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
