@@ -1,4 +1,4 @@
-# Prueba Técnica Full-Stack - Remesas App
+# Evaluación Técnica Full-Stack - Remesas App
 
 Aplicación full-stack para gestión de remesas desarrollada con FastAPI, React, PostgreSQL y Docker.
 
